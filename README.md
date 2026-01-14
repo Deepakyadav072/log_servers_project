@@ -1,42 +1,55 @@
-# Log Summary TCP Server (C++)
 
-## Overview
-This project is a simple C++ application that reads a log file and sends a log summary to a client using a TCP socket server.  
-It is designed for beginners to demonstrate C++ fundamentals, Linux usage, networking, and basic Docker concepts.
+# Log Server Project (C++)
 
----
+## 📌 Project Overview
+This project is a simple *Log Server Application* written in *C++*.  
+It reads logs from a file, processes them in real time, and provides a summary of log types such as *INFO, **WARNING, and **ERROR*.
 
-## Features
-- Reads a log file (app.log)
-- Counts INFO, WARNING, and ERROR messages
-- Uses multi-threading for log processing and networking
-- Sends log summary to client via TCP
-- Can be built and run on Linux
-- Dockerized for easy deployment
-
----
-
-## Architecture
-The application has two main components:
-1. *Log Processor*
-   - Reads the log file line by line
-   - Counts different log levels
-2. *TCP Server*
-   - Listens on a port (8080)
-   - Sends log summary to a client when connected
-
-Both components run in separate threads.
+The project is designed for beginners and demonstrates:
+- C++ STL usage
+- File handling
+- Multithreading
+- Basic Linux commands
+- Git & GitHub workflow
+- Production-style thinking
 
 ---
 
-## Thread Model
-- *Thread 1:* Reads and processes the log file
-- *Thread 2:* Runs the TCP socket server
-- A mutex is used to protect shared data (log summary)
-
-This simple thread model keeps the code easy to understand and debug.
+## 🎯 Features
+- ✅ Read logs from app.log
+- ✅ Count logs by type (INFO, WARNING, ERROR)
+- ✅ Display real-time log summary every *10 seconds*
+- ✅ Write all ERROR logs into a separate file error.log
+- ✅ Runs on Linux terminal
+- ✅ Easy to extend (networking, Docker, CI/CD)
 
 ---
+
+## 🏗️ Architecture
+- The program continuously reads the log file.
+- Logs are classified by type.
+- Summary is printed every 10 seconds.
+- ERROR logs are stored separately.
+
+---
+
+## 🧵 Thread Model
+- *Main Thread*
+  - Starts the application
+  - Launches worker threads
+
+- *Log Reader Thread*
+  - Reads app.log
+  - Updates log counters
+  - Writes ERROR logs to error.log
+
+- *Summary Thread*
+  - Prints log summary every 10 seconds
+
+This model ensures:
+- Non-blocking execution
+- Better performance
+- Scalability for large log files
 
 ## File Structure
 
@@ -60,11 +73,16 @@ make
 nc localhost 8080
 
 ### step 5: Sample Output
+Log server started...
+Reading logs from app.log
 
-Total Lines: 5
-ERROR: 2
-WARNING: 1
-INFO: 2
+---- Log Summary ----
+INFO     : 4
+WARNING  : 2
+ERROR    : 1
+---------------------
+
+(Updated every 10 seconds)
 
 ### Docker Setup 
 Build Docker image
