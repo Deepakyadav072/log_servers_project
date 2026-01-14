@@ -1,5 +1,5 @@
 INFO Application started
-WARNING Disk usage high
-ERROR Failed to open file
-INFO User login success
-ERROR Network timeout
+INFO User logged in
+WARN Disk usage high
+ERROR Database connection failed
+ERROR File not found
