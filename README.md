@@ -53,7 +53,7 @@ This model ensures:
 
 ## File Structure
 
-log_servers_project/ ├── main.cpp ├── app.log ├── Makefile ├── Dockerfile ├── README.md └── .gitignore
+![image alt](https://github.com/Deepakyadav072/log_servers_project/blob/407d54c4b226736299a40d2e0ec6785fbcad7e10/Screenshot%20(414).png)
 
 ## How to Run (Linux)
 
@@ -93,4 +93,5 @@ docker build -t log-server .
 docker run -p 8080:8080 log-server
 
 ### Then connect using:
+
 nc localhost 8080
