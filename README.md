@@ -1,4 +1,4 @@
-
+![image alt](https://github.com/Deepakyadav072/log_servers_project/blob/458e5d4969577b9a35e8e03ea94ea9b829746cb4/Screenshot%20(413).png)
 # Log Server Project (C++)
 
 ## 📌 Project Overview
@@ -95,3 +95,4 @@ docker run -p 8080:8080 log-server
 ### Then connect using:
 
 nc localhost 8080
+
